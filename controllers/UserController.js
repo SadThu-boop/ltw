@@ -85,10 +85,9 @@ module.exports.loginUser = async (req, res) => {
     }
 
     const userId = user._id;
-    const secretKey = "key_hongnv";
     const expiresIn = "1h";
 
-    const token = jwt.sign({ userId }, secretKey, { expiresIn }); // Tạo token
+    const token = jwt.sign({ userId }, process.env.SECRET_KEY, { expiresIn }); // Tạo token
     console.log(token);
     console.log("hello");
     res.json({ success: true, token });
